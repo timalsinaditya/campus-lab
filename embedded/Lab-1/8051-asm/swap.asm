@@ -1,0 +1,15 @@
+ORG 00H
+
+MOV R0, #04H
+
+MOV R1, #6BH
+
+MOV A, R1
+
+ROTATE:
+	RR A
+	DJNZ R0, ROTATE
+
+MOV P0, A
+
+END
