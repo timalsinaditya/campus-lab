@@ -1,0 +1,9 @@
+# Ignore all files
+*
+
+# Allow .c and .asm files
+!*.c
+!*.asm
+!*.m
+!*.jl
+!*.ipynb
