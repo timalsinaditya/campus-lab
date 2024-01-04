@@ -1,4 +1,4 @@
-pkg load control;
+pkg load communications;
 pkg load signal;
 
 f_sampling = 44100
@@ -42,7 +42,7 @@ normalized_cutoff = fc / (fs / 2);
 [num, den] = cheby1(5,2, normalized_cutoff);
 
 demodulated_signal = filter(num, den, under_modulated_signal);
-
+z=amdemod(ideal_modulation,f_carrier,f_sampling)
 subplot(3, 1, 1);
 plot(t, under_modulated_signal);
 title('Under Modulation');
@@ -52,7 +52,7 @@ plot(t, ideal_modulation);
 title('Ideal Modulation');
 
 subplot(3, 1, 3);
-plot(t, demodulated_signal);
-title('Over Modulation');
+plot(t, z);
+title('DeModulation');
 
 
