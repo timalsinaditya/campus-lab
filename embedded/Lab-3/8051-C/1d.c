@@ -2,7 +2,7 @@
 
 sbit out = P2^0;
 
-unsigned int multiple = 0, value = 3000/1.085, quotient, remainder;
+unsigned int multiple = 0, delay = 3000/1.085, quotient, remainder;
 
 void delay3ms() {
 	unsigned int i =0;
@@ -18,22 +18,22 @@ void delay3ms() {
 		TR0 = 0;
 }
 
-void calculate_the_value (void) {
+void calculate_the_register_values(void) {
 	unsigned int i ;
 	for(i = 0xFF; i>0; --i)
 	{
-		quotient = value / i;
-		if( quotient < 0xFF-50)
+		quotient = delay / i;
+		if( quotient < 0xFF)
 		{
 			multiple = i;
-			remainder = value % i;
+			remainder = delay % i;
 			break;
 		}	
 	}
 }	
 			
 void main() {
-	calculate_the_value();
+	calculate_the_register_values();
 	while(1) {
 		out = 1; 
 		delay3ms();
