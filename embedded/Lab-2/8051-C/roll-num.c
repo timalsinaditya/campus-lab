@@ -4,13 +4,13 @@ static unsigned char letter_hex_code[] = {0x79, 0x7c};
 static unsigned char decimal_to_7seg[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f};
 static unsigned char display_control_bits[4] = {0x08, 0x04, 0x02, 0x01};
 
-#define DELAY 10
+#define DELAY 5
 #define DELAY_DOUBLE 50
 
 void delay(unsigned long amount) {
 	unsigned long i, j;
 	for(i = 0; i < amount; ++i) {
-		for(j = 0; j < 500; ++j);
+		for(j = 0; j < 50; ++j);
 	}	
 }
 
@@ -31,18 +31,21 @@ void display_number(unsigned int n) {
 	convert_to_bcd2(n, roll_num);
 	
 	for(i = 0; i < DELAY; ++i) {
-		for(j = 0; j < 200; ++j) {
+		for(j = 0; j < 5; ++j) {
 			for(k = 0; k < 2; ++k) {
 				P2 = 0;
 				P0 = decimal_to_7seg[roll_num[k]];
 				P2 = display_control_bits[k];
+				delay(5);
 			}
 			for(; k < 4; ++k) {
 				P2 = 0;
 				P0 = roll_num[k];
 				P2 = display_control_bits[k];
+				delay(5);
 			}
 		}
+		
 	}
 }
 
