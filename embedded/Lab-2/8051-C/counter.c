@@ -3,7 +3,7 @@
 static unsigned char decimal_to_7seg[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f};
 static unsigned char display_control_bits[4] = {0x08, 0x04, 0x02, 0x01};
 
-#define DELAY 30
+#define DELAY 5
 #define DELAY_DOUBLE 50
 
 void delay(unsigned long amount) {
@@ -30,11 +30,13 @@ void display_number(unsigned int n) {
 	n_digits = convert_to_bcd4(n, digits);
 	
 	for(i = 0; i < DELAY; ++i) {
-		for(j = 0; j < 200; ++j) {
+		for(j = 0; j < 10; ++j) {
 			for(k = 0; k < n_digits; ++k) {
 				P0 = decimal_to_7seg[digits[k]];
 				P2 = display_control_bits[k];
+				delay(1);
 				P2 = 0;
+
 			}
 		}
 	}
