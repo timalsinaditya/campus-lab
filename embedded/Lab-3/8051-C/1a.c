@@ -13,13 +13,13 @@ void delay3ms() {
 }
 
 void main() {
+	unsigned int i;
 	while(1) {
 		out = 1; 
 		delay3ms();
 		out = 0;
+		for(i =0 ; i<4; ++i){
 		delay3ms();
-		delay3ms();
-		delay3ms();
-		delay3ms();
+		}
 	}
 }

@@ -2,10 +2,14 @@
 
 sbit out = P2^0;
 
-void delay5ms(){ //because 13 bit cannot provide 10ms delay
+//since the max value can be calculated for
+//13 bit timer is for 8.8 ms 
+//5ms delay was used
+
+void delay5ms(){ 
 	TMOD = 0x00;
 	TH0 = 0x72;
-	TL0 = 0xF8;
+	TL0 = 0xD1;
 	TR0 = 1;
 	while (TF0 == 0);
 	TF0 = 0;
