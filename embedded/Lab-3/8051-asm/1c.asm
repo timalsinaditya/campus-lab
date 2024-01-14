@@ -14,7 +14,7 @@ SJMP MAIN
 
 DELAY:
 MOV TMOD, #20H
-MOV TH1, #03CH ;calculated register value is A998 
+MOV TH1, #03CH 
 MOV TL1, #0F8H
 SETB TR1
 MOV R3, #0FH
