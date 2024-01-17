@@ -2,18 +2,10 @@
 
 sbit out = P2^0;
 
-/*
-void calculate_the_timers(unsigned int delay_value) {
-	timer_value = pow(2, 16) - (delay_value * 1000) / 1.085;
-}*/
-
 void delay(unsigned long timer_value){
-	unsigned int tuning_value = 200;
-	unsigned long adjusted_timer;
-	adjusted_timer = timer_value + tuning_value;
 	TMOD = 0x10;
-	TH1 = (adjusted_timer - 13 >> 8) & 0xFF; //for higher value
-	TL1 = (adjusted_timer	- 13) & 0xFF; //for lower value
+	TH1 = ((timer_value + 187 )>> 8) & 0xFF; //for higher value
+	TL1 = (timer_value + 187) & 0xFF; //for lower value
 	TR1 = 1;
 	while (TF1 == 0);
 	TF1 = 0;
