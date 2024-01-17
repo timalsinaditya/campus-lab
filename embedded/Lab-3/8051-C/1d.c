@@ -2,7 +2,7 @@
 
 sbit out = P2^0;
 
-unsigned int multiple = 0, delay = 3000/1.085, quotient, remainder;
+unsigned int multiple = 0, delay = 3000/1.085, quotient = 0, remainder = 0;
 
 void delay3ms() {
 	unsigned int i =0;
