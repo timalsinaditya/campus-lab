@@ -1,6 +1,6 @@
 #include<reg51.h>
 
-sbit out = P2^0;
+sbit out = P0^0;
 
 //since the max value can be calculated for
 //13 bit timer is for 8.8 ms 

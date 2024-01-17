@@ -1,8 +1,8 @@
 #include<reg51.h>
 
-sbit out = P2^0;
+sbit out = P0^0;
 
-unsigned int multiple = 0, quotient, remainder;
+unsigned int multiple = 0, quotient = 0, remainder = 0;
 
 void calculate_the_register_values(unsigned int delay_value) {
 	unsigned int i ;
