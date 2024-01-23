@@ -13,7 +13,7 @@ void delay(unsigned int amount) {
 	for(i = 0; i < amount; ++i);	
 }
 
-change_time_to_bcd(){
+void change_time_to_bcd(){
 	unsigned int set_min=1, set_sec=3;
 		time[set_min] = decimal_to_7seg[minutes%10];
 		time[set_min-1] = decimal_to_7seg[minutes/10];
@@ -23,7 +23,7 @@ change_time_to_bcd(){
 		time[set_sec-1] = decimal_to_7seg[seconds/10];
 }
 
-set_time() {
+void set_time() {
 	change_time_to_bcd();
 }
 
